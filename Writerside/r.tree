@@ -7,4 +7,10 @@
                  start-page="introduction.md">
 
     <toc-element topic="introduction.md"/>
+    <toc-element topic="Components.md">
+        <toc-element topic="Functional-Components.md"/>
+        <toc-element topic="JSX-JavaScript-XML.md"/>
+        <toc-element topic="Props.md"/>
+        <toc-element topic="Conditional-Rendering.md"/>
+    </toc-element>
 </instance-profile>

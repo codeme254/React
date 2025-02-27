@@ -1,13 +1,15 @@
 # Introduction
 React is a JavaScript library for building user interfaces.
 
+React was developed by Facebook in 2011 and was open-sourced in 2013.
+
 React is not a framework—it is not even exclusive to the web, it is used with other libraries to render to certain
 environments. For instance, react native can be used to build mobile applications.
 
 To build for the web, developers use React together with ReactDOM.
 
 React DOM is a separate package that enables React to update and render UI components on the web browser by directly
-interacting with the browser's Document Object Model (DOM), ensuring smooth, dynamic user experiences
+interacting with the browser's Document Object Model (DOM), ensuring smooth, dynamic user experiences.
 
 ## Why not "Just JavaScript"
 - Writing complex JavaScript code quickly becomes cumbersome.
