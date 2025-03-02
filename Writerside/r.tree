@@ -12,5 +12,6 @@
         <toc-element topic="JSX-JavaScript-XML.md"/>
         <toc-element topic="Props.md"/>
         <toc-element topic="Conditional-Rendering.md"/>
+        <toc-element topic="Styling-Components.md"/>
     </toc-element>
 </instance-profile>
