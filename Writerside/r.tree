@@ -19,4 +19,9 @@
         <toc-element topic="Events.md"/>
         <toc-element topic="Manipulating-the-DOM-with-Refs.md"/>
     </toc-element>
+    <toc-element topic="Routing-with-React-Router.md">
+        <toc-element topic="React-Router-Basics.md"/>
+        <toc-element topic="Advanced-Routing.md"/>
+        <toc-element topic="Handling-Navigation.md"/>
+    </toc-element>
 </instance-profile>
