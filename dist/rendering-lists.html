@@ -1,0 +1,74 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-03-03T08:25:27.2854533"><title>Rendering Lists | React</title><script type="application/json" id="virtual-toc-data">[{"id":"displaying-a-list-of-items-in-react","level":0,"title":"Displaying a List of Items In React","anchor":"#displaying-a-list-of-items-in-react"},{"id":"displaying-a-list-of-objects","level":0,"title":"Displaying a List of Objects","anchor":"#displaying-a-list-of-objects"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Rendering Lists | React"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="React Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/rendering-lists.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Rendering Lists | React"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/rendering-lists.html#webpage",
+    "url": "writerside-documentation/rendering-lists.html",
+    "name": "Rendering Lists | React",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "React Help"
+}</script><!-- End Schema.org --></head><body data-id="Rendering-Lists" data-main-title="Rendering Lists" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Rendering.md|Rendering"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>React  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Rendering-Lists" id="Rendering-Lists.md">Rendering Lists</h1><p id="z5csclt_3">When working with React, you will often times need to render lists of items.</p><section class="chapter"><h2 id="displaying-a-list-of-items-in-react" data-toc="displaying-a-list-of-items-in-react">Displaying a List of Items In React</h2><p id="z5csclt_6">To achieve displaying a list of items in React, we are going to use the JavaScript's built in <code class="code" id="z5csclt_14">map</code> method to iterate over our list of items; and map them from primitives or objects to HTML elements.</p><p id="z5csclt_7"><span class="control" id="z5csclt_15">Note: Each element receives a mandatory <span class="emphasis" id="z5csclt_16">key</span> prop</span>.</p><p id="z5csclt_8">When rendering lists in React, <span class="control" id="z5csclt_17">keys</span> help React identify which items changed, which items were added, or removed.</p><div class="code-block" data-lang="javascript">
+function Applicants() {
+  const applicants = [&quot;Jack&quot;, &quot;Jane&quot;, &quot;Smith&quot;];
+  return (
+    &lt;div&gt;
+      {applicants.map(function (applicant) {
+        return &lt;p key={applicant}&gt;{applicant}&lt;/p&gt;;
+      })}
+    &lt;/div&gt;
+  );
+}
+
+export default Applicants;
+</div><p id="z5csclt_10">We can also use JavaScript arrow function to make the inline function for the map more lightweight:</p><div class="code-block" data-lang="javascript">
+function Applicants() {
+  const applicants = [&quot;Jack&quot;, &quot;Jane&quot;, &quot;Smith&quot;];
+  return (
+    &lt;div&gt;
+      {applicants.map((applicant) =&gt; {
+        return &lt;p key={applicant}&gt;{applicant}&lt;/p&gt;;
+      })}
+    &lt;/div&gt;
+  );
+}
+
+export default Applicants;
+</div><p id="z5csclt_12">Since we are not doing anything in the function's block body, we can also refactor it to a concise body and omit the return statement and the curly braces for the function body:</p><div class="code-block" data-lang="javascript">
+function Applicants() {
+  const applicants = [&quot;Jack&quot;, &quot;Jane&quot;, &quot;Smith&quot;];
+  return (
+    &lt;div&gt;
+      {applicants.map((applicant) =&gt; (
+        &lt;p key={applicant}&gt;{applicant}&lt;/p&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}
+
+export default Applicants;
+</div></section><section class="chapter"><h2 id="displaying-a-list-of-objects" data-toc="displaying-a-list-of-objects">Displaying a List of Objects</h2><p id="z5csclt_18">It doesn't work any different for complex objects in JavaScript arrays. You iterate over the list with the map method again and output for each list item your HTML elements.</p><div class="code-block" data-lang="javascript">
+function Applicants() {
+  const applicants = [
+    { firstName: &quot;John&quot;, lastName: &quot;Doe&quot;, age: 25 },
+    { firstName: &quot;Jack&quot;, lastName: &quot;Smith&quot;, age: 20 },
+    { firstName: &quot;Brad&quot;, lastName: &quot;Paisley&quot;, age: 35 },
+  ];
+  return (
+    &lt;div&gt;
+      {applicants.map((applicant) =&gt; (
+        &lt;p key={applicant.firstName}&gt;
+          {applicant.firstName} {applicant.lastName} - {applicant.age}
+        &lt;/p&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}
+
+export default Applicants;
+</div></section><div class="last-modified">Last modified: 03 March 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="rendering.html" class="navigation-links__prev">Rendering</a><a href="events.html" class="navigation-links__next">Events</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>
