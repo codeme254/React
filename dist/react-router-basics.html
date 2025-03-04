@@ -1,0 +1,83 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-03-03T18:15:05.1050866"><title>React Router Basics | React</title><script type="application/json" id="virtual-toc-data">[{"id":"configuring-the-router","level":0,"title":"Configuring the router","anchor":"#configuring-the-router"},{"id":"defining-routes","level":0,"title":"Defining Routes","anchor":"#defining-routes"},{"id":"handling-navigation","level":0,"title":"Handling Navigation","anchor":"#handling-navigation"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="React Router Basics | React"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="React Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/react-router-basics.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="React Router Basics | React"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/react-router-basics.html#webpage",
+    "url": "writerside-documentation/react-router-basics.html",
+    "name": "React Router Basics | React",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "React Help"
+}</script><!-- End Schema.org --></head><body data-id="React-Router-Basics" data-main-title="React Router Basics" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Routing-with-React-Router.md|Routing with React Router"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>React  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="React-Router-Basics" id="React-Router-Basics.md">React Router Basics</h1><p id="-bjaix4_3">Once you have <code class="code" id="-bjaix4_8">react-router-dom</code> installed, there are three things you need to do to use it:</p><ul class="list _bullet" id="-bjaix4_4"><li class="list__item" id="-bjaix4_9"><p>Setup your router</p></li><li class="list__item" id="-bjaix4_10"><p>Define your routes</p></li><li class="list__item" id="-bjaix4_11"><p>Handle navigation</p></li></ul><section class="chapter"><h2 id="configuring-the-router" data-toc="configuring-the-router">Configuring the router</h2><p id="-bjaix4_12">This is the easiest step by far in setting up the router.</p><p id="-bjaix4_13">All you need to do is import the specific router you need (<code class="code" id="-bjaix4_15">BrowserRouter</code> for the web) and wrap your entire application in that router.</p><div class="code-block" data-lang="javascript">
+import { StrictMode } from &quot;react&quot;;
+import { createRoot } from &quot;react-dom/client&quot;;
+import App from &quot;./App.jsx&quot;;
+import { BrowserRouter } from &quot;react-router-dom&quot;;
+import &quot;./index.css&quot;;
+
+createRoot(document.getElementById(&quot;root&quot;)).render(
+  &lt;StrictMode&gt;
+    &lt;BrowserRouter&gt;
+      &lt;App /&gt;
+    &lt;/BrowserRouter&gt;
+  &lt;/StrictMode&gt;,
+);
+</div></section><section class="chapter"><h2 id="defining-routes" data-toc="defining-routes">Defining Routes</h2><p id="-bjaix4_16">The next step in React Router is to define your routes.</p><p id="-bjaix4_17">This is generally done at the top level of your application, such as in the App component, but can be done anywhere you want.</p><p id="-bjaix4_18">Defining routes is as simple as defining a single <code class="code" id="-bjaix4_23">Route</code> component for each route in your application and then putting all those <code class="code" id="-bjaix4_24">Route</code> components in a single <code class="code" id="-bjaix4_25">Routes</code> component.</p><p id="-bjaix4_19">Whenever your URL changes, React Router will look at the routes defined in your <code class="code" id="-bjaix4_26">Routes</code> component, and it will render the content in the <code class="code" id="-bjaix4_27">element</code> prop of the <code class="code" id="-bjaix4_28">Route</code> that has a path that matches the URL.</p><p id="-bjaix4_20">In the example below, if our URL was <code class="code" id="-bjaix4_29">/books</code> then the <code class="code" id="-bjaix4_30">BookList</code> component would be rendered.</p><div class="code-block" data-lang="javascript">
+import { Routes, Route } from &quot;react-router-dom&quot;;
+import Home from &quot;./Home&quot;;
+import BookList from &quot;./BookList&quot;;
+
+function App() {
+  return (
+    &lt;&gt;
+      &lt;Routes&gt;
+        &lt;Route path=&quot;/&quot; element={&lt;Home /&gt;} /&gt;
+        &lt;Route path=&quot;/books&quot; element={&lt;BookList /&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/&gt;
+  );
+}
+
+export default App;
+</div><p id="-bjaix4_22">The nice thing about React Router is that when you navigate between pages, it will only refresh the content inside your Routes component. All the rest of the content on your page will stay the same which helps with performance and user experience.</p></section><section class="chapter"><h2 id="handling-navigation" data-toc="handling-navigation">Handling Navigation</h2><p id="-bjaix4_31">The final step to React Router is handling navigation.</p><p id="-bjaix4_32">Normally in an application you would navigate with anchor tags, but React Router uses its own custom <code class="code" id="-bjaix4_39">Link</code> component to handle navigation.</p><p id="-bjaix4_33">This <code class="code" id="-bjaix4_40">Link</code> component is just a wrapper around an anchor tag that helps ensure all the routing and conditional re-rendering is handled properly so you can use it just like your would a normal anchor tag.</p><div class="code-block" data-lang="javascript">
+import { Link } from &quot;react-router-dom&quot;;
+
+function Header() {
+  return (
+    &lt;div&gt;
+      &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
+      &lt;Link to=&quot;/books&quot;&gt;Books&lt;/Link&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Header;
+</div><p id="-bjaix4_35">In our example, we added two links to the home and books page. You will also notice that we used the <code class="code" id="-bjaix4_41">to</code> prop to set the URL instead of the <code class="code" id="-bjaix4_42">href</code> prop you are used to using with an anchor tag.</p><p id="-bjaix4_36">We can also use the <code class="code" id="-bjaix4_43">NavLink</code> component for navigation.</p><p id="-bjaix4_37">The <code class="code" id="-bjaix4_44">NavLink</code> component works similar to <code class="code" id="-bjaix4_45">Link</code> component, but it provides extra styling to indicate the active route in the navbar based on the active URL.</p><div class="code-block" data-lang="javascript">
+import { NavLink } from &quot;react-router-dom&quot;;
+
+function Header() {
+  return (
+    &lt;div&gt;
+      &lt;NavLink
+        className={({ isActive }) =&gt; (isActive ? &quot;active-link link&quot; : &quot;link&quot;)}
+        to=&quot;/&quot;
+      &gt;
+        Home
+      &lt;/NavLink&gt;
+      &lt;NavLink
+        className={({ isActive }) =&gt; (isActive ? &quot;active-link link&quot; : &quot;link&quot;)}
+        to=&quot;/books&quot;
+      &gt;
+        Books
+      &lt;/NavLink&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Header;
+</div></section><div class="last-modified">Last modified: 03 March 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="routing-with-react-router.html" class="navigation-links__prev">Routing with React Router</a><a href="advanced-routing.html" class="navigation-links__next">Advanced Routing</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>
