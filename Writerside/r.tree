@@ -30,4 +30,5 @@
         <toc-element topic="useRef.md"/>
         <toc-element topic="useReducer.md"/>
     </toc-element>
+    <toc-element topic="Handling-Forms-in-React.md"/>
 </instance-profile>
