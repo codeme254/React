@@ -24,4 +24,10 @@
         <toc-element topic="Advanced-Routing.md"/>
         <toc-element topic="Handling-Navigation.md"/>
     </toc-element>
+    <toc-element topic="React-Hooks.md">
+        <toc-element topic="useState.md"/>
+        <toc-element topic="useEffect.md"/>
+        <toc-element topic="useRef.md"/>
+        <toc-element topic="useReducer.md"/>
+    </toc-element>
 </instance-profile>
