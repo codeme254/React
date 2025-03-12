@@ -1,0 +1,69 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-03-12T09:08:42.6024272"><title>useEffect | React</title><script type="application/json" id="virtual-toc-data">[{"id":"useeffect-without-any-dependencies-runs-on-every-render","level":0,"title":"useEffect without any dependencies (runs on every render)","anchor":"#useeffect-without-any-dependencies-runs-on-every-render"},{"id":"useeffect-with-an-empty-dependency-array-runs-only-once-on-mounting","level":0,"title":"useEffect with an Empty Dependency Array (Runs Only Once on Mounting)","anchor":"#useeffect-with-an-empty-dependency-array-runs-only-once-on-mounting"},{"id":"useeffect-with-dependencies-runs-when-dependencies-change","level":0,"title":"useEffect with Dependencies (Runs When Dependencies Change)","anchor":"#useeffect-with-dependencies-runs-when-dependencies-change"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="useEffect | React"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="React Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/useeffect.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="useEffect | React"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/useeffect.html#webpage",
+    "url": "writerside-documentation/useeffect.html",
+    "name": "useEffect | React",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "React Help"
+}</script><!-- End Schema.org --></head><body data-id="useEffect" data-main-title="useEffect" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="React-Hooks.md|React Hooks"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>React  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="useEffect" id="useEffect.md">useEffect</h1><p id="-cdrb4e_3">The <code class="code" id="-cdrb4e_13">useEffect</code> hook is a fundamental part of React that allows functional components to handle side effects.</p><p id="-cdrb4e_4">A side effect in programming (especially in React) is anything a function does that affects something outside of itself.</p><p id="-cdrb4e_5">These side effects include; fetching data from APIs, directly manipulating the DOM e.t.c.</p><p id="-cdrb4e_6"><code class="code" id="-cdrb4e_14">useEffect</code> hook is imported from react:</p><div class="code-block" data-lang="javascript">
+import { useEffect } from 'react';
+</div><p id="-cdrb4e_8">The <code class="code" id="-cdrb4e_15">useEffect</code> hook takes in two arguments:</p><ul class="list _bullet" id="-cdrb4e_9"><li class="list__item" id="-cdrb4e_16"><p>The first argument is a function that is executed to handle the side effects.</p></li><li class="list__item" id="-cdrb4e_17"><p>The second argument (optional) is an array of dependencies that determines when the effect runs.</p></li></ul><section class="chapter"><h2 id="useeffect-without-any-dependencies-runs-on-every-render" data-toc="useeffect-without-any-dependencies-runs-on-every-render"><code class="code" id="-cdrb4e_21">useEffect</code> without any dependencies (runs on every render)</h2><p id="-cdrb4e_19">When <code class="code" id="-cdrb4e_22">useEffect</code> is used without any dependencies, it runs after every render:</p><div class="code-block" data-lang="javascript">
+import { useState, useEffect } from &quot;react&quot;;
+
+function App() {
+  const [number, setNumber] = useState(0);
+
+  useEffect(() =&gt; {
+    console.log(`Component rendered ${number}`);
+  });
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;{number}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setNumber(number + 1)}&gt;Increase&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</div></section><section class="chapter"><h2 id="useeffect-with-an-empty-dependency-array-runs-only-once-on-mounting" data-toc="useeffect-with-an-empty-dependency-array-runs-only-once-on-mounting"><code class="code" id="-cdrb4e_27">useEffect</code> with an Empty Dependency Array (Runs Only Once on Mounting)</h2><p id="-cdrb4e_24">If you pass an empty dependency array (<code class="code" id="-cdrb4e_28">[]</code>), useEffect runs only once.</p><div class="code-block" data-lang="javascript">
+import { useState, useEffect } from &quot;react&quot;;
+
+function App() {
+  const [number, setNumber] = useState(0);
+
+  useEffect(() =&gt; {
+    console.log(`Component rendered ${number}`);
+  }, []);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;{number}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setNumber(number + 1)}&gt;Increase&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</div><p id="-cdrb4e_26">A use case for this would be fetching data when a component loads.</p></section><section class="chapter"><h2 id="useeffect-with-dependencies-runs-when-dependencies-change" data-toc="useeffect-with-dependencies-runs-when-dependencies-change"><code class="code" id="-cdrb4e_32">useEffect</code> with Dependencies (Runs When Dependencies Change)</h2><p id="-cdrb4e_30">You can specify dependencies inside the array. The effect will only run if one of the dependencies changes.</p><div class="code-block" data-lang="javascript">
+import { useState, useEffect } from &quot;react&quot;;
+
+function App() {
+  const [number, setNumber] = useState(0);
+
+  useEffect(() =&gt; {
+    console.log(`Component rendered ${number}`);
+  }, [number]); // effect will run each time number changes
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;{number}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setNumber(number + 1)}&gt;Increase&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</div></section><div class="last-modified">Last modified: 12 March 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="usestate.html" class="navigation-links__prev">useState</a><a href="useref.html" class="navigation-links__next">useRef</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>

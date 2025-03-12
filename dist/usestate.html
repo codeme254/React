@@ -1,0 +1,142 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-03-12T09:08:42.5386144"><title>useState | React</title><script type="application/json" id="virtual-toc-data">[{"id":"using-a-function-to-calculate-the-initial-state","level":0,"title":"Using a function to calculate the initial state","anchor":"#using-a-function-to-calculate-the-initial-state"},{"id":"updating-state-based-on-the-previous-state","level":0,"title":"Updating State Based on The Previous State","anchor":"#updating-state-based-on-the-previous-state"},{"id":"handling-state-with-objects","level":0,"title":"Handling state with objects","anchor":"#handling-state-with-objects"},{"id":"handling-state-with-arrays","level":0,"title":"Handling State with Arrays","anchor":"#handling-state-with-arrays"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="useState | React"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="React Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/usestate.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="useState | React"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/usestate.html#webpage",
+    "url": "writerside-documentation/usestate.html",
+    "name": "useState | React",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "React Help"
+}</script><!-- End Schema.org --></head><body data-id="useState" data-main-title="useState" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="React-Hooks.md|React Hooks"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>React  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="useState" id="useState.md">useState</h1><p id="hln8ty_3">The <code class="code" id="hln8ty_15">useState</code> hook is one of the most fundamental and commonly used hooks in React, <code class="code" id="hln8ty_16">useState</code> hook allows functional components to manage state.</p><p id="hln8ty_4">State refers to information that can change over time as a result of user actions or other events.</p><p id="hln8ty_5"><code class="code" id="hln8ty_17">useState</code> hook is imported from <code class="code" id="hln8ty_18">react</code>.</p><div class="code-block" data-lang="javascript">
+import { useState } from 'react';
+</div><p id="hln8ty_7">When we call the <code class="code" id="hln8ty_19">useState</code> hook, it returns an array with two elements, the current state value and a function to update the state; we also pass the initial value of our state as the argument to the <code class="code" id="hln8ty_20">useState</code> call.</p><div class="code-block" data-lang="javascript">
+import { useState } from &quot;react&quot;;
+
+function App() {
+  const [number, setNumber] = useState(0);
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Number = {number}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+</div><p id="hln8ty_9">To update the state, we <span class="control" id="hln8ty_21">MUST</span> use the state update function:</p><div class="code-block" data-lang="javascript">
+import { useState } from &quot;react&quot;;
+
+function App() {
+  const [number, setNumber] = useState(0);
+
+  function handleAddNumber() {
+    // number += 1 // WRONG
+    setNumber(number + 1);
+  }
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Number = {number}&lt;/p&gt;
+      &lt;button onClick={handleAddNumber}&gt;increment number&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</div><section class="chapter"><h2 id="using-a-function-to-calculate-the-initial-state" data-toc="using-a-function-to-calculate-the-initial-state">Using a function to calculate the initial state</h2><p id="hln8ty_22">Sometimes, the initial state is expensive to calculate, you can pass a function to the <code class="code" id="hln8ty_24">useState</code> hook, the function will only run once (on the first render).</p><div class="code-block" data-lang="javascript">
+import { useState } from &quot;react&quot;;
+
+function App() {
+  const [number, setNumber] = useState(function () {
+    console.log(&quot;A very expensive calculation to derive number&quot;);
+    return 10;
+  });
+
+  function handleAddNumber() {
+    // number += 1 // WRONG
+    setNumber(number + 1);
+  }
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Number = {number}&lt;/p&gt;
+      &lt;button onClick={handleAddNumber}&gt;increment number&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</div></section><section class="chapter"><h2 id="updating-state-based-on-the-previous-state" data-toc="updating-state-based-on-the-previous-state">Updating State Based on The Previous State</h2><p id="hln8ty_25">We can also update state based on what the previous state was.</p><p id="hln8ty_26">For this, we pass a callback function to the state update function which takes the previous state as a parameter and returns a new state based on the previous state.</p><div class="code-block" data-lang="javascript">
+import { useState } from &quot;react&quot;;
+
+function App() {
+  const [number, setNumber] = useState(function () {
+    console.log(&quot;A very expensive calculation to derive number&quot;);
+    return 10;
+  });
+
+  function handleAddNumber() {
+    setNumber(function (previousNumber) {
+      console.log(`Previous Number ${previousNumber}`);
+      return previousNumber + 1;
+    });
+  }
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Number = {number}&lt;/p&gt;
+      &lt;button onClick={handleAddNumber}&gt;increment number&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</div></section><section class="chapter"><h2 id="handling-state-with-objects" data-toc="handling-state-with-objects">Handling state with objects</h2><p id="hln8ty_28">We can also work with objects in our state:</p><div class="code-block" data-lang="javascript">
+import { useState } from &quot;react&quot;;
+
+function App() {
+  const [profile, setProfile] = useState({ name: &quot;John&quot;, age: 25})
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Name: {profile.name}&lt;/p&gt;
+      &lt;p&gt;Age: {profile.age}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+</div><section class="chapter"><h3 id="updating-an-object-state" data-toc="updating-an-object-state">Updating an object state</h3><p id="hln8ty_32">When updating an object state, we use the <code class="code" id="hln8ty_34">spread</code> operator.</p><div class="code-block" data-lang="javascript">
+import { useState } from &quot;react&quot;;
+
+function App() {
+  const [profile, setProfile] = useState({ name: &quot;John&quot;, age: 25 });
+
+  function handleUpdateAge() {
+    setProfile({ ...profile, age: profile.age + 1 });
+  }
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Name: {profile.name}&lt;/p&gt;
+      &lt;p&gt;Age: {profile.age}&lt;/p&gt;
+      &lt;button onClick={handleUpdateAge}&gt;Update Age&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</div></section><section class="chapter"><h3 id="why-use-profile" data-toc="why-use-profile">Why use <code class="code" id="hln8ty_39">{...profile}</code></h3><p id="hln8ty_36">State updates in React replace the entire state object. If you do:</p><div class="code-block" data-lang="javascript">
+setProfile({age: profile.age + 1 });
+</div><p id="hln8ty_38">You will end up losing all the other object properties. Using <code class="code" id="hln8ty_40">{...profile}</code> ensures that all properties remain while updating only one.</p></section></section><section class="chapter"><h2 id="handling-state-with-arrays" data-toc="handling-state-with-arrays">Handling State with Arrays</h2><p id="hln8ty_41">We could also handle state with arrays:</p><div class="code-block" data-lang="javascript">
+import { useState } from &quot;react&quot;;
+
+function App() {
+  const [tasks, setTasks] = useState([&quot;task 1&quot;, &quot;task 2&quot;]);
+
+  function handleAddTask() {
+    setTasks([...tasks, `Another task`]);
+  }
+
+  return (
+    &lt;div&gt;
+      {tasks.map((task) =&gt; (
+        &lt;p key={Math.random()}&gt;{task}&lt;/p&gt;
+      ))}
+      &lt;button onClick={handleAddTask}&gt;Add Task&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</div></section><div class="last-modified">Last modified: 12 March 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="react-hooks.html" class="navigation-links__prev">React Hooks</a><a href="useeffect.html" class="navigation-links__next">useEffect</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>
