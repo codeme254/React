@@ -1,0 +1,56 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-03-14T06:41:56.9632805"><title>Installation and Set up | React</title><script type="application/json" id="virtual-toc-data">[{"id":"installing-react-query-in-your-project","level":0,"title":"Installing React Query In Your Project","anchor":"#installing-react-query-in-your-project"},{"id":"setting-up-a-fake-server","level":0,"title":"Setting up a Fake Server","anchor":"#setting-up-a-fake-server"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Installation and Set up | React"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="React Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/set-up.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Installation and Set up | React"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/set-up.html#webpage",
+    "url": "writerside-documentation/set-up.html",
+    "name": "Installation and Set up | React",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "React Help"
+}</script><!-- End Schema.org --></head><body data-id="Set-Up" data-main-title="Installation and Set up" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="React-Query.md|React Query"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>React  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Set-Up" id="Set-Up.md">Installation and Set up</h1><section class="chapter"><h2 id="installing-react-query-in-your-project" data-toc="installing-react-query-in-your-project">Installing React Query In Your Project</h2><p id="z9ue39q_5">To install React Query in your project, run:</p><div class="code-block" data-lang="bash">
+npm install @tanstack/react-query
+</div></section><section class="chapter"><h2 id="setting-up-a-fake-server" data-toc="setting-up-a-fake-server">Setting up a Fake Server</h2><p id="z9ue39q_7">Since we don't have a real backend, we can use a fake server.</p><p id="z9ue39q_8">The fake server allows us to practice fetching, mutating, and handling data responses without needing a real backend.</p><p id="z9ue39q_9">For this, we will use <a href="https://www.npmjs.com/package/json-server" id="z9ue39q_21" data-external="true" rel="noopener noreferrer">json server</a> npm package.</p><p id="z9ue39q_10">Install <code class="code" id="z9ue39q_22">json-server</code> to your project:</p><div class="code-block" data-lang="bash">
+npm install json-server
+</div><p id="z9ue39q_12">In the root directory, create a <code class="code" id="z9ue39q_23">db.json</code> file and past in the following data:</p><div class="code-block" data-lang="json">
+{
+  &quot;students&quot;: [
+    {
+      &quot;firstName&quot;: &quot;John&quot;,
+      &quot;lastName&quot;: &quot;Doe&quot;,
+      &quot;age&quot;: 20
+    },
+    {
+      &quot;firstName&quot;: &quot;Jane&quot;,
+      &quot;lastName&quot;: &quot;Smith&quot;,
+      &quot;age&quot;: 22
+    },
+    {
+      &quot;firstName&quot;: &quot;Michael&quot;,
+      &quot;lastName&quot;: &quot;Johnson&quot;,
+      &quot;age&quot;: 21
+    },
+    {
+      &quot;firstName&quot;: &quot;Emily&quot;,
+      &quot;lastName&quot;: &quot;Davis&quot;,
+      &quot;age&quot;: 19
+    },
+    {
+      &quot;firstName&quot;: &quot;Daniel&quot;,
+      &quot;lastName&quot;: &quot;Brown&quot;,
+      &quot;age&quot;: 23
+    }
+  ]
+}
+</div><p id="z9ue39q_14">Finally, run:</p><div class="code-block" data-lang="bash">
+npx json-server db.json
+</div><p id="z9ue39q_16">This will start the server on port <code class="code" id="z9ue39q_24">3000</code>.</p><p id="z9ue39q_17">If you want a custom port, you can set up a script, add the following script to your <code class="code" id="z9ue39q_25">package.json</code> under scripts:</p><div class="code-block" data-lang="bash">
+&quot;serve-json&quot;: &quot;json-server --watch db.json --port 4000&quot;
+</div><p id="z9ue39q_19">Finally, run:</p><div class="code-block" data-lang="bash">
+npm run serve-json
+</div></section><div class="last-modified">Last modified: 14 March 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="react-query.html" class="navigation-links__prev">React Query</a><a href="fetching-data-with-usequery.html" class="navigation-links__next">Fetching Data With useQuery</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>
