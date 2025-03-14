@@ -31,4 +31,10 @@
         <toc-element topic="useReducer.md"/>
     </toc-element>
     <toc-element topic="Handling-Forms-in-React.md"/>
+    <toc-element topic="React-Query.md">
+        <toc-element topic="Set-Up.md"/>
+        <toc-element topic="Fetching-Data-With-useQuery.md"/>
+        <toc-element topic="React-Query-DevTools.md"/>
+        <toc-element topic="Query-Cache.md"/>
+    </toc-element>
 </instance-profile>
