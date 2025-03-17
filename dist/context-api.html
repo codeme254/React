@@ -1,0 +1,64 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-03-18T00:19:35.6204603"><title>Context API | React</title><script type="application/json" id="virtual-toc-data">[{"id":"step-1-create-the-context","level":0,"title":"Step 1: Create the context","anchor":"#step-1-create-the-context"},{"id":"step-2-provide-the-context","level":0,"title":"Step 2: Provide the context","anchor":"#step-2-provide-the-context"},{"id":"step-3-consume-the-context","level":0,"title":"Step 3: Consume the context","anchor":"#step-3-consume-the-context"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Context API | React"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="React Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/context-api.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Context API | React"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/context-api.html#webpage",
+    "url": "writerside-documentation/context-api.html",
+    "name": "Context API | React",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "React Help"
+}</script><!-- End Schema.org --></head><body data-id="Context-API" data-main-title="Context API" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="State-Management.md|State Management"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>React  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Context-API" id="Context-API.md">Context API</h1><p id="-13s4zi_3">When state needs to be shared across many nested components, passing props can become tedious (prop drilling).</p><p id="-13s4zi_4">React's context API solves this.</p><p id="-13s4zi_5"><code class="code" id="-13s4zi_13">useContext</code> is an inbuilt React hook that helps us to manage context.</p><p id="-13s4zi_6">The goal is to establish a single source of truth, creating a centralized location where any component can access the required data. Any component that wants to update the data will also have to update it there.</p><p id="-13s4zi_7">The &quot;centralized location&quot; is known as <span class="control" id="-13s4zi_14">context</span> in the <code class="code" id="-13s4zi_15">useContext</code> hook, state management frameworks like redux and Zustand call it <span class="control" id="-13s4zi_16">store</span></p><p id="-13s4zi_8">The steps are:</p><ul class="list _bullet" id="-13s4zi_9"><li class="list__item" id="-13s4zi_17"><p>Create the context.</p></li><li class="list__item" id="-13s4zi_18"><p>Provide the context to all components that need it.</p></li><li class="list__item" id="-13s4zi_19"><p>Consume the context in child components.</p></li></ul><section class="chapter"><h2 id="step-1-create-the-context" data-toc="step-1-create-the-context">Step 1: Create the context</h2><p id="-13s4zi_20">It is a convention to create each context in a separate js file that is placed inside a folder called context.</p><p id="-13s4zi_21">To create a context, we use the <code class="code" id="-13s4zi_23">createContext</code> hook form react.</p><div class="code-block" data-lang="javascript">
+import { createContext } from &quot;react&quot;;
+
+const UserContext = createContext();
+
+export default UserContext;
+</div></section><section class="chapter"><h2 id="step-2-provide-the-context" data-toc="step-2-provide-the-context">Step 2: Provide the context</h2><p id="-13s4zi_24">To provide the context, we import it in the parent component and wrap all the children that need access to the context with the context.</p><p id="-13s4zi_25">When enclosing all the children components within the context, we pass a prop to the context called <span class="control" id="-13s4zi_27">value</span> which takes in an object of the state that is to be shared:</p><div class="code-block" data-lang="javascript">
+import UserContext from &quot;./context/UserContext&quot;;
+import Dashboard from &quot;./Dashboard&quot;;
+import Profile from &quot;./Profile&quot;;
+function App() {
+  const fullName = &quot;Marcus Aurelius&quot;;
+  const username = &quot;marcus001&quot;;
+  return (
+    &lt;UserContext.Provider value={{ fullName, username }}&gt;
+      &lt;Dashboard /&gt;
+      &lt;Profile /&gt;
+    &lt;/UserContext.Provider&gt;
+  );
+}
+</div></section><section class="chapter"><h2 id="step-3-consume-the-context" data-toc="step-3-consume-the-context">Step 3: Consume the context</h2><p id="-13s4zi_28">To consume the context and thus the state, we sue the <code class="code" id="-13s4zi_32">useContext</code> hook.</p><p id="-13s4zi_29">We pass into <code class="code" id="-13s4zi_33">useContext</code> hook the context that we want to consume; the hook returns an object containing all the states present in the context.</p><div class="code-block" data-lang="javascript">
+import { useContext } from &quot;react&quot;;
+import UserContext from &quot;./context/UserContext&quot;;
+
+function Dashboard() {
+  const { fullName, username } = useContext(UserContext);
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Dashboard&lt;/h1&gt;
+      &lt;h2&gt;Full Name: {fullName}&lt;/h2&gt;
+      &lt;h2&gt;Username: {username}&lt;/h2&gt;
+    &lt;/div&gt;
+  );
+}
+</div><div class="code-block" data-lang="javascript">
+import { useContext } from &quot;react&quot;;
+import UserContext from &quot;./context/UserContext&quot;;
+
+function Profile() {
+  const { fullName, username } = useContext(UserContext);
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Profile&lt;/h1&gt;
+      &lt;h2&gt;Full name: {fullName}&lt;/h2&gt;
+      &lt;h2&gt;Username: {username}&lt;/h2&gt;
+    &lt;/div&gt;
+  );
+}
+</div></section><div class="last-modified">Last modified: 17 March 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="lifting-state-up.html" class="navigation-links__prev">Lifting State Up</a><a href="zustand.html" class="navigation-links__next">Zustand</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>
