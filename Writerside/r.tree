@@ -38,4 +38,9 @@
         <toc-element topic="React-Query-DevTools.md"/>
         <toc-element topic="Query-Cache.md"/>
     </toc-element>
+    <toc-element topic="State-Management.md">
+        <toc-element topic="Lifting-State-Up.md"/>
+        <toc-element topic="Context-API.md"/>
+        <toc-element topic="Zustand.md"/>
+    </toc-element>
 </instance-profile>
